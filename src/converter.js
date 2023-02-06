@@ -42,7 +42,24 @@ class Converter {
       }
       return acc
     }, {})
+
     return totalZip
+  }
+
+  convertToArray(zipObj) {
+    let finalZip = [['Zip Code', 'Total Customers'].join(',')]
+    for(const zipCodeKey in zipObj) {
+      let zipTotal = [zipCodeKey, zipObj[zipCodeKey]].join(',')
+      finalZip.push(zipTotal)
+    }
+    return finalZip.join('\r\n')
+  }
+
+  createCsvFile() {
+    let zipTotalObj = this.sumZipCodes()
+    let json = this.convertToArray(zipTotalObj);
+    fs.writeFileSync('output.csv', json);
+   
   }
 }
 

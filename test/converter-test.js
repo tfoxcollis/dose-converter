@@ -1,5 +1,8 @@
 var assert = require('chai').assert;
+const { expect } = require('chai');
 var Converter = require('../src/converter.js')
+const fs = require("fs")
+
 
 describe('Converter', function() {
 
@@ -40,6 +43,15 @@ describe('Converter', function() {
     let totalZip = converter.sumZipCodes()
 
     assert.equal(totalZip['19348'], 2)
+  })
+  it('should take zipcode object and convert to csv file', function() {
+    let converter = new Converter()
+    let response1 = converter.readCsv('./data/Group01.csv')
+    converter.createCustomers(response1)
+
+    converter.createCsvFile()
+    
+    expect(fs.existsSync('output.csv')).to.be.true
   })
 
 })
