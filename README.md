@@ -9,7 +9,7 @@
 1. Clone repo
 2. Run npm install
 3. To run the unit tests, in the command line type `npm test test/*`.  With all test passing, you will find an output.csv file in the root directory.
-4. The test scripts only used the first CSV file, to get full summary of all 10 CSV files run `node runner.js` in your command line.  You will find the output.csv file in your root directory.
+4. The test scripts only used the first CSV file, to get the full summary of all 10 CSV files run `node runner.js` in your command line.  You will find the output.csv file in your root directory.
 
 ## Technologies used
 
