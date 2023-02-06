@@ -32,4 +32,14 @@ describe('Converter', function() {
     assert.equal(converter.customers[0].ZipCode, 19348)
   })
 
+  it('should create a zipcodes summary', function() {
+    let converter = new Converter()
+    let response1 = converter.readCsv('./data/Group01.csv')
+    converter.createCustomers(response1)
+
+    let totalZip = converter.sumZipCodes()
+
+    assert.equal(totalZip['19348'], 2)
+  })
+
 })

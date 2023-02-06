@@ -11,7 +11,7 @@ class Converter {
     let csvArr = csv.toString().split("\r")
     return csvArr
   }
-
+ 
   createCustomers(custArr) {
     //remove headers
     custArr.shift()
@@ -31,7 +31,18 @@ class Converter {
       this.customers.push(new Customer(custObj))
     })
     return 'Success!'
-    
+  }
+
+  sumZipCodes() {
+    let totalZip = this.customers.reduce((acc, cust) => {
+      if(acc[cust.ZipCode]) {
+        acc[cust.ZipCode] += 1
+      }else {
+        acc[cust.ZipCode] = 1
+      }
+      return acc
+    }, {})
+    return totalZip
   }
 }
 
