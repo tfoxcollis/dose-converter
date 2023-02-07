@@ -46,7 +46,8 @@ class Converter {
     return totalZip
   }
 
-  convertToArray(zipObj) {
+  //update method name
+  convertToString(zipObj) {
     let finalZip = [['Zip Code', 'Total Customers'].join(',')]
     for(const zipCodeKey in zipObj) {
       let zipTotal = [zipCodeKey, zipObj[zipCodeKey]].join(',')
@@ -55,10 +56,11 @@ class Converter {
     return finalZip.join('\r\n')
   }
 
+  //update variable name
   createCsvFile() {
     let zipTotalObj = this.sumZipCodes()
-    let json = this.convertToArray(zipTotalObj);
-    fs.writeFileSync('output.csv', json);
+    let csvString = this.convertToString(zipTotalObj);
+    fs.writeFileSync('output.csv', csvString);
    
   }
 }
